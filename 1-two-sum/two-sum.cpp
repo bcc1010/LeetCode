@@ -1,14 +1,14 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        map<int, int> hash;
+        map<int, int> numMap;
         for (int i = 0; i < nums.size(); i++) {
-            int subtraction = target - nums[i];
-            if (hash.find(subtraction) != hash.end() && hash[subtraction] != i) {
-                return {i, hash[subtraction]};
+            int cmpl = target - nums[i];
+            if (numMap.count(cmpl)) {
+                return {numMap[cmpl], i};
             }
-            hash[nums[i]] = i;
+            numMap[nums[i]] = i;
         }
-        return {-1};
+        return {};
     }
 };
